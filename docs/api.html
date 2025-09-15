@@ -296,7 +296,7 @@
         <aside class="sidebar">
             <h3><i class="fas fa-list"></i> Endpoints</h3>
             <ul class="endpoint-list">
-                <li><a href="#users-get-all" class="active">Get All Users</a></li>
+                <li><a href="#users-new-user" class="active">/api/new_user</a></li>
                 <li><a href="#users-get-single">Get Single User</a></li>
                 <li><a href="#users-create">Create User</a></li>
                 <li><a href="#posts-get-all">Get All Posts</a></li>
@@ -305,14 +305,14 @@
         </aside>
         
         <main class="main-content">
-            <section id="users-get-all" class="endpoint-section">
+            <section id="users-new-user" class="endpoint-section">
                 <div class="endpoint-header">
-                    <span class="method get">GET</span>
-                    <span class="endpoint-url">/api/users</span>
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/new_user</span>
                 </div>
                 
                 <p class="endpoint-description">
-                    Retrieves a list of all users in the system. Supports pagination and filtering by various parameters.
+                    Create new user account.
                 </p>
                 
                 <h3>Parameters</h3>
@@ -327,22 +327,22 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>page</td>
-                            <td>integer</td>
-                            <td>No</td>
-                            <td>Page number for pagination (default: 1)</td>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Username of the new user</td>
                         </tr>
                         <tr>
-                            <td>limit</td>
-                            <td>integer</td>
-                            <td>No</td>
-                            <td>Number of items per page (default: 10, max: 100)</td>
+                            <td>email</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>E-mail of the new user.</td>
                         </tr>
                         <tr>
-                            <td>active</td>
-                            <td>boolean</td>
-                            <td>No</td>
-                            <td>Filter by active status</td>
+                            <td>password</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Salted password of the new user.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -356,37 +356,21 @@
                     <div class="tab-content">
                         <div id="request-users-get-all" class="tab-pane active">
                             <div class="code-block">
-                                <pre>curl -X GET "https://api.example.com/api/users?page=1&limit=10" \
+                                <pre>curl -X POST "https://onlinedi.vision/api/new_user" \
 -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
--H "Content-Type: application/json"</pre>
+-H "Content-Type: application/json" \
+-d '{
+    "<span class="code-key">username</span>": "<span class="code-string">username123</span>",
+    "<span class="code-key">email</span>": "<span class="code-string">username@example.com</span>",
+    "<span class="code-key">password</span>": "<span class="code-string">SALTEDsecurepassword123</span>",
+}'</pre>
                             </div>
                         </div>
                         
                         <div id="response-users-get-all" class="tab-pane">
                             <div class="code-block">
                                 <pre>{
-  "<span class="code-key">data</span>": [
-    {
-      "<span class="code-key">id</span>": <span class="code-number">1</span>,
-      "<span class="code-key">name</span>": "<span class="code-string">John Doe</span>",
-      "<span class="code-key">email</span>": "<span class="code-string">john@example.com</span>",
-      "<span class="code-key">active</span>": <span class="code-boolean">true</span>,
-      "<span class="code-key">createdAt</span>": "<span class="code-string">2023-01-15T10:30:00Z</span>"
-    },
-    {
-      "<span class="code-key">id</span>": <span class="code-number">2</span>,
-      "<span class="code-key">name</span>": "<span class="code-string">Jane Smith</span>",
-      "<span class="code-key">email</span>": "<span class="code-string">jane@example.com</span>",
-      "<span class="code-key">active</span>": <span class="code-boolean">true</span>,
-      "<span class="code-key">createdAt</span>": "<span class="code-string">2023-02-20T14:45:00Z</span>"
-    }
-  ],
-  "<span class="code-key">pagination</span>": {
-    "<span class="code-key">page</span>": <span class="code-number">1</span>,
-    "<span class="code-key">limit</span>": <span class="code-number">10</span>,
-    "<span class="code-key">total</span>": <span class="code-number">45</span>,
-    "<span class="code-key">pages</span>": <span class="code-number">5</span>
-  }
+       "<span class="code-key">token</span>": <span class="code-number">asduh348yfhgasudifg...</span>,
 }</pre>
                             </div>
                         </div>
@@ -433,8 +417,7 @@
                     <div class="tab-content">
                         <div id="request-users-get-single" class="tab-pane active">
                             <div class="code-block">
-                                <pre>curl -X GET "https://api.example.com/api/users/123" \
--H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+                                <pre>curl -X GET "https://onlinedi.vision/api/new_userorization: Bearer YOUR_ACCESS_TOKEN" \
 -H "Content-Type: application/json"</pre>
                             </div>
                         </div>
@@ -514,8 +497,7 @@
                     <div class="tab-content">
                         <div id="request-users-create" class="tab-pane active">
                             <div class="code-block">
-                                <pre>curl -X POST "https://api.example.com/api/users" \
--H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+                                <pre>curl -X POST "https://onlinedi.vision/api/new_useration: Bearer YOUR_ACCESS_TOKEN" \
 -H "Content-Type: application/json" \
 -d '{
   "<span class="code-key">name</span>": "<span class="code-string">John Doe</span>",
