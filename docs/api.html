@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --gray-light: #f8f9fa;
+            --gray: #6c757d;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1.5rem 0;
+            overflow-y: auto;
+            height: calc(100vh);
+            position: sticky;
+            top: 0;
+        }
+        
+        .sidebar h3 {
+            padding: 0 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .endpoint-list {
+            list-style: none;
+        }
+        
+        .endpoint-list li {
+            margin-bottom: 0.2rem;
+        }
+        
+        .endpoint-list a {
+            display: block;
+            padding: 0.8rem 1.5rem;
+            color: var(--light-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .endpoint-list a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--primary-color);
+        }
+        
+        .endpoint-list a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-left-color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .endpoint-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .endpoint-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .method {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-right: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .get { background-color: var(--success-color); color: white; }
+        .post { background-color: var(--primary-color); color: white; }
+        .put { background-color: var(--warning-color); color: white; }
+        .delete { background-color: var(--danger-color); color: white; }
+        .patch { background-color: #9b59b6; color: white; }
+        
+        .endpoint-url {
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            flex: 1;
+        }
+        
+        .endpoint-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .parameter-table th,
+        .parameter-table td {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .parameter-table th {
+            background-color: var(--gray-light);
+            font-weight: 600;
+        }
+        
+        .parameter-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+        }
+        
+        .code-block pre {
+            margin: 0;
+        }
+        
+        .code-key { color: #ff79c6; }
+        .code-string { color: #f1fa8c; }
+        .code-number { color: #bd93f9; }
+        .code-boolean { color: #bd93f9; }
+        .code-null { color: #bd93f9; }
+        
+        .tab-container {
+            margin: 1.5rem 0;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-button {
+            padding: 0.8rem 1.5rem;
+            background: #f1f1f1;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            background: white;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .tab-content {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0 0 6px 6px;
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--secondary-color);
+            color: white;
+            margin-top: auto;
+        }
+        
+        .add-endpoint-btn {
+            display: block;
+            width: calc(100% - 3rem);
+            margin: 1rem 1.5rem 0;
+            padding: 0.8rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .add-endpoint-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>[od-official-server] API  Documentation</h1>
+        <p>Comprehensive guide to using our RESTful API endpoints. </p>
+    </header>
+    
+    <div class="container">
+        <aside class="sidebar">
+            <h3><i class="fas fa-list"></i> Endpoints</h3>
+            <ul class="endpoint-list">
+                <li><a href="#users-get-all" class="active">Get All Users</a></li>
+                <li><a href="#users-get-single">Get Single User</a></li>
+                <li><a href="#users-create">Create User</a></li>
+                <li><a href="#posts-get-all">Get All Posts</a></li>
+                <li><a href="#posts-create">Create Post</a></li>
+            </ul>
+        </aside>
+        
+        <main class="main-content">
+            <section id="users-get-all" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-url">/api/users</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Retrieves a list of all users in the system. Supports pagination and filtering by various parameters.
+                </p>
+                
+                <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>page</td>
+                            <td>integer</td>
+                            <td>No</td>
+                            <td>Page number for pagination (default: 1)</td>
+                        </tr>
+                        <tr>
+                            <td>limit</td>
+                            <td>integer</td>
+                            <td>No</td>
+                            <td>Number of items per page (default: 10, max: 100)</td>
+                        </tr>
+                        <tr>
+                            <td>active</td>
+                            <td>boolean</td>
+                            <td>No</td>
+                            <td>Filter by active status</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-users-get-all')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-users-get-all')">Response</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div id="request-users-get-all" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>curl -X GET "https://api.example.com/api/users?page=1&limit=10" \
+-H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+-H "Content-Type: application/json"</pre>
+                            </div>
+                        </div>
+                        
+                        <div id="response-users-get-all" class="tab-pane">
+                            <div class="code-block">
+                                <pre>{
+  "<span class="code-key">data</span>": [
+    {
+      "<span class="code-key">id</span>": <span class="code-number">1</span>,
+      "<span class="code-key">name</span>": "<span class="code-string">John Doe</span>",
+      "<span class="code-key">email</span>": "<span class="code-string">john@example.com</span>",
+      "<span class="code-key">active</span>": <span class="code-boolean">true</span>,
+      "<span class="code-key">createdAt</span>": "<span class="code-string">2023-01-15T10:30:00Z</span>"
+    },
+    {
+      "<span class="code-key">id</span>": <span class="code-number">2</span>,
+      "<span class="code-key">name</span>": "<span class="code-string">Jane Smith</span>",
+      "<span class="code-key">email</span>": "<span class="code-string">jane@example.com</span>",
+      "<span class="code-key">active</span>": <span class="code-boolean">true</span>,
+      "<span class="code-key">createdAt</span>": "<span class="code-string">2023-02-20T14:45:00Z</span>"
+    }
+  ],
+  "<span class="code-key">pagination</span>": {
+    "<span class="code-key">page</span>": <span class="code-number">1</span>,
+    "<span class="code-key">limit</span>": <span class="code-number">10</span>,
+    "<span class="code-key">total</span>": <span class="code-number">45</span>,
+    "<span class="code-key">pages</span>": <span class="code-number">5</span>
+  }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="users-get-single" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-url">/api/users/{id}</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Retrieves a single user by their unique identifier.
+                </p>
+                
+                <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td>integer</td>
+                            <td>Yes</td>
+                            <td>User's unique identifier</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-users-get-single')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-users-get-single')">Response</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div id="request-users-get-single" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>curl -X GET "https://api.example.com/api/users/123" \
+-H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+-H "Content-Type: application/json"</pre>
+                            </div>
+                        </div>
+                        
+                        <div id="response-users-get-single" class="tab-pane">
+                            <div class="code-block">
+                                <pre>{
+  "<span class="code-key">data</span>": {
+    "<span class="code-key">id</span>": <span class="code-number">123</span>,
+    "<span class="code-key">name</span>": "<span class="code-string">John Doe</span>",
+    "<span class="code-key">email</span>": "<span class="code-string">john@example.com</span>",
+    "<span class="code-key">active</span>": <span class="code-boolean">true</span>,
+    "<span class="code-key">createdAt</span>": "<span class="code-string">2023-01-15T10:30:00Z</span>",
+    "<span class="code-key">updatedAt</span>": "<span class="code-string">2023-06-10T08:15:00Z</span>"
+  }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="users-create" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/users</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Creates a new user account with the provided information.
+                </p>
+                
+                <h3>Request Body</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>name</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User's full name</td>
+                        </tr>
+                        <tr>
+                            <td>email</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User's email address</td>
+                        </tr>
+                        <tr>
+                            <td>password</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User's password (min 8 characters)</td>
+                        </tr>
+                        <tr>
+                            <td>avatar</td>
+                            <td>string</td>
+                            <td>No</td>
+                            <td>URL to user's avatar image</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-users-create')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-users-create')">Response</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div id="request-users-create" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>curl -X POST "https://api.example.com/api/users" \
+-H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+-H "Content-Type: application/json" \
+-d '{
+  "<span class="code-key">name</span>": "<span class="code-string">John Doe</span>",
+  "<span class="code-key">email</span>": "<span class="code-string">john@example.com</span>",
+  "<span class="code-key">password</span>": "<span class="code-string">securepassword123</span>",
+  "<span class="code-key">avatar</span>": "<span class="code-string">https://example.com/avatar.jpg</span>"
+}'</pre>
+                            </div>
+                        </div>
+                        
+                        <div id="response-users-create" class="tab-pane">
+                            <div class="code-block">
+                                <pre>{
+  "<span class="code-key">data</span>": {
+    "<span class="code-key">id</span>": <span class="code-number">123</span>,
+    "<span class="code-key">name</span>": "<span class="code-string">John Doe</span>",
+    "<span class="code-key">email</span>": "<span class="code-string">john@example.com</span>",
+    "<span class="code-key">active</span>": <span class="code-boolean">true</span>,
+    "<span class="code-key">avatar</span>": "<span class="code-string">https://example.com/avatar.jpg</span>",
+    "<span class="code-key">createdAt</span>": "<span class="code-string">2023-07-01T14:30:00Z</span>",
+    "<span class="code-key">updatedAt</span>": "<span class="code-string">2023-07-01T14:30:00Z</span>"
+  }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="add-endpoint" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">ADD NEW ENDPOINT</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    To add a new endpoint to this documentation, follow these steps:
+                </p>
+                
+                <ol>
+                    <li>Duplicate one of the existing endpoint sections</li>
+                    <li>Update the ID, method, URL, and description</li>
+                    <li>Modify the parameters table as needed</li>
+                    <li>Update the request and response examples</li>
+                    <li>Add a new navigation link in the sidebar</li>
+                </ol>
+                
+                <div class="code-block">
+                    <pre><span class="code-comment">&lt;!-- Example endpoint structure --&gt;</span>
+&lt;section id="<span class="code-string">endpoint-id</span>" class="<span class="code-string">endpoint-section</span>"&gt;
+  &lt;div class="<span class="code-string">endpoint-header</span>"&gt;
+    &lt;span class="<span class="code-string">method get</span>"&gt;GET&lt;/span&gt;
+    &lt;span class="<span class="code-string">endpoint-url</span>"&gt;/api/endpoint&lt;/span&gt;
+  &lt;/div&gt;
+  
+  &lt;p class="<span class="code-string">endpoint-description</span>"&gt;
+    Description of your endpoint.
+  &lt;/p&gt;
+  
+  <span class="code-comment">&lt;!-- Add parameters table if needed --&gt;</span>
+  
+  <span class="code-comment">&lt;!-- Add request/response tabs --&gt;</span>
+&lt;/section&gt;</pre>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <footer>
+        <p>API Documentation &copy; 2023 | Version 1.2.0</p>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            // Get all tab content and hide them
+            const tabPanes = document.getElementsByClassName("tab-pane");
+            for (let i = 0; i < tabPanes.length; i++) {
+                tabPanes[i].style.display = "none";
+            }
+            
+            // Get all tab buttons and remove active class
+            const tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+            }
+            
+            // Show the current tab and add active class to the button
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
+        // Simple smooth scrolling for navigation
+        document.querySelectorAll('.endpoint-list a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 20,
+                    behavior: 'smooth'
+                });
+                
+                // Update active class
+                document.querySelectorAll('.endpoint-list a').forEach(a => {
+                    a.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
