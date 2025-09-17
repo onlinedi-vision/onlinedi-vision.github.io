@@ -64,7 +64,7 @@
         }
         
         .sidebar {
-            width: 280px;
+            width: 320px;
             background-color: var(--dark-color);
             color: white;
             padding: 1.5rem 0;
@@ -302,6 +302,8 @@
             <ul class="endpoint-list">
 
 <li><a style="padding:4px;" href="#api-get-server-info" class="active">/servers/{sid}/api/get_server_info</a></li>
+<li><a style="padding:4px;" href="#api-try-login" class="active">/api/try_login</a></li>
+<li><a style="padding:4px;" href="#api-get-server-users" class="active">/servers/{sid}/api/get_server_users</a></li>
 <li><a style="padding:4px;" href="#api-new-user" class="active">/api/new_user</a></li>
 
             </ul>
@@ -382,6 +384,180 @@ curl -X GET 'https://onlinedi.vision/servers/1313/api/get_server_info'
             </section>
     
 
+            <section id="api-try-login" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/try_login</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Log user in. If username-password combination is corect the return payload should contain a token.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Username of the user.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>password</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Password of the user.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-try-login')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-try-login')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-try-login" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/api/try_login' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "username": "username123", 
+    "password": "STRONGpassword" 
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-try-login" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+   "token": "hu345tdvnfjsui..."
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-get-server-users" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/servers/{sid}/api/get_server_users</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Get the list of users from a given server based on a valid token-username combination.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Username of the user (must be member of the server).</td>
+                        </tr>    
+
+                        <tr>
+                            <td>email</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Token of the user (must be valid).</td>
+                        </tr>    
+
+                        <tr>
+                            <td>sid (in URL path)</td>
+                            <td>integer</td>
+                            <td>Yes</td>
+                            <td>Server ID of the queried server.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-get-server-users')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-get-server-users')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-get-server-users" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/servers/1313/api/get_server_users' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "username": "username123", 
+    "token": "asdfq3reQW355f..." 
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-get-server-users" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+   "u_list":[
+        "username1",
+        "username2",
+   ]
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
             <section id="api-new-user" class="endpoint-section">
                 <div class="endpoint-header">
                     <span class="method post">POST</span>
@@ -443,12 +619,12 @@ curl -X GET 'https://onlinedi.vision/servers/1313/api/get_server_info'
                             <div class="code-block">
                                 <pre>
                       
-curl -X POST 'https://onlinedi.vision/api/new_user'  
--H 'Content-Type: application/json'  
+curl -X POST 'https://onlinedi.vision/api/new_user' \
+-H 'Content-Type: application/json' \
 -d '{ 
-    'username': 'username123', 
-    'email': 'username@example.com', 
-    'password': 'SALTEDsecurepassword123', 
+    "username": "username123", 
+    "email": "username@example.com", 
+    "password": "SALTEDsecurepassword123" 
 }' 
 
 </pre>

@@ -11,12 +11,12 @@
         "}"
       ],
       "request": [
-        "curl -X POST 'https://onlinedi.vision/api/new_user'  ",
-        "-H 'Content-Type: application/json'  ",
+        "curl -X POST 'https://onlinedi.vision/api/new_user' \\",
+        "-H 'Content-Type: application/json' \\",
         "-d '{ ",
-        "    'username': 'username123', ",
-        "    'email': 'username@example.com', ",
-        "    'password': 'SALTEDsecurepassword123', ",
+        "    \"username\": \"username123\", ",
+        "    \"email\": \"username@example.com\", ",
+        "    \"password\": \"SALTEDsecurepassword123\" ",
         "}' "
       ],
       "parameters": [

@@ -1,0 +1,38 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/try_login",
+      "id":"api-try-login",
+      "method":"post",
+      "description":"Log user in. If username-password combination is corect the return payload should contain a token.",
+      "response": [
+        "{",
+        "   \"token\": \"hu345tdvnfjsui...\"",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/api/try_login' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"username\": \"username123\", ",
+        "    \"password\": \"STRONGpassword\" ",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"Username of the user."
+        },
+
+        {
+          "name":"password",
+          "type":"string",
+          "required":"Yes",
+          "description":"Password of the user."
+        }
+      ]
+    }
+  ]
+}

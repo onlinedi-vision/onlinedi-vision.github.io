@@ -1,0 +1,47 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/servers/{sid}/api/get_server_users",
+      "id":"api-get-server-users",
+      "method":"post",
+      "description":"Get the list of users from a given server based on a valid token-username combination.",
+      "response": [
+        "{",
+        "   \"u_list\":[",
+        "        \"username1\",",
+        "        \"username2\",",
+        "   ]",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/servers/1313/api/get_server_users' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"username\": \"username123\", ",
+        "    \"token\": \"asdfq3reQW355f...\" ",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"Username of the user (must be member of the server)."
+        },
+
+        {
+          "name":"email",
+          "type":"string",
+          "required":"Yes",
+          "description":"Token of the user (must be valid)."
+        },
+        {
+          "name":"sid (in URL path)",
+          "type":"integer",
+          "required":"Yes",
+          "description":"Server ID of the queried server."         
+        }
+      ]
+    }
+  ]
+}

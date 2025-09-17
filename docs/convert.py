@@ -68,7 +68,7 @@ HTML_HEADER="""
         }
         
         .sidebar {
-            width: 280px;
+            width: 320px;
             background-color: var(--dark-color);
             color: white;
             padding: 1.5rem 0;
