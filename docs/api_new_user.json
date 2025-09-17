@@ -1,0 +1,46 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/new_user",
+      "id":"api-new-user",
+      "method":"post",
+      "description":"Create new user account.",
+      "response": [
+        "{",
+        "   \"token\":\"asdsaerggreasfd...\"",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/api/new_user'  ",
+        "-H 'Content-Type: application/json'  ",
+        "-d '{ ",
+        "    'username': 'username123', ",
+        "    'email': 'username@example.com', ",
+        "    'password': 'SALTEDsecurepassword123', ",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"Username of the new user."
+        },
+
+        {
+          "name":"email",
+          "type":"string",
+          "required":"Yes",
+          "description":"E-mail address of the new user."
+        },
+
+        {
+          "name":"Password",
+          "type":"string",
+          "required":"Yes",
+          "description":"Salted password of the new user."
+        }
+      ]
+    }
+  ]
+}

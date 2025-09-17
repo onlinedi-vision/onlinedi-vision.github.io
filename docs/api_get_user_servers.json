@@ -1,0 +1,28 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/servers/{sid}/api/get_server_info",
+      "id":"api-get-server-info",
+      "method":"get",
+      "description":"Get all relevant information about a public server.",
+      "response": [
+        "{",
+        "   \"name\":\"Awsome Server\"",
+        "   \"desc\":\"This is an AWESOME server :3\"",
+        "   \"img_url\":\"https://link.to.image\"",
+        "}"
+      ],
+      "request": [
+        "curl -X GET 'https://onlinedi.vision/servers/1313/api/get_server_info'  "
+      ],
+      "parameters": [
+        {
+          "name":"sid",
+          "type":"string",
+          "required":"Yes",
+          "description":"The ID of the server."
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,8 @@
+import json           # for json.load(... endpoints.json file ...)
+import os
 
+
+HTML_HEADER="""
     
 <!DOCTYPE html>
 <html lang="en">
@@ -295,183 +299,8 @@
     </header>
     
     <div class="container">
-
-
-       <aside class="sidebar">
-            <h3><i class="fas fa-list"></i> Endpoints</h3>
-            <ul class="endpoint-list">
-
-<li><a style="padding:4px;" href="#api-get-server-info" class="active">/servers/{sid}/api/get_server_info</a></li>
-<li><a style="padding:4px;" href="#api-new-user" class="active">/api/new_user</a></li>
-
-            </ul>
-        </aside>
-
-        <main class="main-content">
-    
-
-            <section id="api-get-server-info" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method get">GET</span>
-                    <span class="endpoint-url">/servers/{sid}/api/get_server_info</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Get all relevant information about a public server.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>sid</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>The ID of the server.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-get-server-info')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-get-server-info')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-get-server-info" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X GET 'https://onlinedi.vision/servers/1313/api/get_server_info'  
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-get-server-info" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-   "name":"Awsome Server"
-   "desc":"This is an AWESOME server :3"
-   "img_url":"https://link.to.image"
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-new-user" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method post">POST</span>
-                    <span class="endpoint-url">/api/new_user</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Create new user account.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>username</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Username of the new user.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>email</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>E-mail address of the new user.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>Password</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Salted password of the new user.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-new-user')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-new-user')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-new-user" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X POST 'https://onlinedi.vision/api/new_user'  
--H 'Content-Type: application/json'  
--d '{ 
-    'username': 'username123', 
-    'email': 'username@example.com', 
-    'password': 'SALTEDsecurepassword123', 
-}' 
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-new-user" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-   "token":"asdsaerggreasfd..."
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
+"""
+HTML_FOOTER="""
     
         </main>
     </div>
@@ -521,4 +350,157 @@ curl -X POST 'https://onlinedi.vision/api/new_user'
         });
     </script>
 </body>
-</html>
+</html>"""
+
+
+def append_html(output: str, stream: File | None) -> None:
+    if stream == None:
+        print(output)
+    else:
+        stream.write(output)
+    
+def append_side_bar(endpoints: list, stream: File | None) -> None:
+    side_bar_before="""
+       <aside class="sidebar">
+            <h3><i class="fas fa-list"></i> Endpoints</h3>
+            <ul class="endpoint-list">
+"""
+    append_html(side_bar_before, stream)
+    for ep in endpoints:
+        path = ep["endpoint"]
+        id = ep["id"]
+        side_bar_content=f'<li><a style="padding:4px;" href="#{id}" class="active">{path}</a></li>'
+        append_html(side_bar_content, stream)
+
+    side_bar_after="""
+            </ul>
+        </aside>
+
+        <main class="main-content">
+    """
+    append_html(side_bar_after, stream)
+
+def append_endpoint_header(endpoint: endpoint, stream: File | None) -> None:
+    method = endpoint["method"]
+    path = endpoint["endpoint"]
+    description = endpoint["description"]
+    id = endpoint["id"]
+    endpoint_path_template=f"""
+            <section id="{id}" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method {method}">{method.upper()}</span>
+                    <span class="endpoint-url">{path}</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    {description}
+                </p>
+                    """
+    append_html(endpoint_path_template, stream)
+
+def append_parameters(parameters: list, stream: File | None) -> None:
+    parameter_header="""
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                """
+    append_html(parameter_header, stream)
+    for parameter in parameters:
+        name = parameter["name"]
+        type = parameter["type"]
+        required = parameter["required"]
+        description = parameter["description"]
+        parameter_template=f"""
+                        <tr>
+                            <td>{name}</td>
+                            <td>{type}</td>
+                            <td>{required}</td>
+                            <td>{description}</td>
+                        </tr>    """
+        append_html(parameter_template, stream)
+
+    parameter_footer="""
+                    </tbody>
+            </table>
+     """
+    append_html(parameter_footer, stream)
+    pass
+
+def append_request(request: str, id: str, stream: File | None) -> None:
+    request_header=f"""
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-{id}')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-{id}')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-{id}" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      """
+    append_html(request_header, stream)
+    for line in request:
+        append_html(line, stream)
+    request_footer=f"""
+</pre>
+                            </div>
+                        </div>
+ 
+    """
+    append_html(request_footer, stream)
+    pass    
+
+def append_response(response: str, id: str, stream: File | None) -> None:
+    response_header=f"""
+                        <div id="response-{id}" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+"""
+    append_html(response_header, stream)
+    for line in response:
+        append_html(line, stream)
+    response_footer="""                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    """
+    append_html(response_footer, stream)
+    
+    pass
+
+def main_loop(endpoints: list, stream: File | None) -> None:
+    append_html(HTML_HEADER, stream)
+    append_side_bar(endpoints, stream)
+    for endpoint in endpoints:
+        endpoint_path = endpoint['endpoint']
+        id = endpoint["id"]
+        description = endpoint['description']
+        request = endpoint['request']
+        response = endpoint['response']
+        parameters = endpoint['parameters']
+        append_endpoint_header(endpoint, stream)
+        append_parameters(parameters, stream)
+        append_request(request, id, stream)
+        append_response(response, id, stream)
+    append_html(HTML_FOOTER, stream)
+
+if __name__ == "__main__":
+    stream = None
+    json_filenames = [file for file in os.listdir('.') if os.path.isfile(file) and file.endswith(".json")]
+    endpoints = []
+    for json_filename in json_filenames:
+        with open(json_filename, "r") as json_file:
+            endpoints += json.load(json_file)['endpoints']
+    main_loop(endpoints, stream)
