@@ -353,13 +353,13 @@ HTML_FOOTER="""
 </html>"""
 
 
-def append_html(output: str, stream: File | None) -> None:
+def append_html(output: str, stream) -> None:
     if stream == None:
         print(output)
     else:
         stream.write(output)
     
-def append_side_bar(endpoints: list, stream: File | None) -> None:
+def append_side_bar(endpoints: list, stream) -> None:
     side_bar_before="""
        <aside class="sidebar">
             <h3><i class="fas fa-list"></i> Endpoints</h3>
@@ -380,7 +380,7 @@ def append_side_bar(endpoints: list, stream: File | None) -> None:
     """
     append_html(side_bar_after, stream)
 
-def append_endpoint_header(endpoint: endpoint, stream: File | None) -> None:
+def append_endpoint_header(endpoint, stream) -> None:
     method = endpoint["method"]
     path = endpoint["endpoint"]
     description = endpoint["description"]
@@ -398,7 +398,7 @@ def append_endpoint_header(endpoint: endpoint, stream: File | None) -> None:
                     """
     append_html(endpoint_path_template, stream)
 
-def append_parameters(parameters: list, stream: File | None) -> None:
+def append_parameters(parameters: list, stream) -> None:
     parameter_header="""
         
             <h3>Parameters</h3>
@@ -435,7 +435,7 @@ def append_parameters(parameters: list, stream: File | None) -> None:
     append_html(parameter_footer, stream)
     pass
 
-def append_request(request: str, id: str, stream: File | None) -> None:
+def append_request(request: str, id: str, stream) -> None:
     request_header=f"""
                <div class="tab-container">
                     <div class="tab-buttons">
@@ -460,7 +460,7 @@ def append_request(request: str, id: str, stream: File | None) -> None:
     append_html(request_footer, stream)
     pass    
 
-def append_response(response: str, id: str, stream: File | None) -> None:
+def append_response(response: str, id: str, stream) -> None:
     response_header=f"""
                         <div id="response-{id}" class="tab-pane">
                             <div class="code-block">
@@ -480,7 +480,7 @@ def append_response(response: str, id: str, stream: File | None) -> None:
     
     pass
 
-def main_loop(endpoints: list, stream: File | None) -> None:
+def main_loop(endpoints: list, stream) -> None:
     append_html(HTML_HEADER, stream)
     append_side_bar(endpoints, stream)
     for endpoint in endpoints:
