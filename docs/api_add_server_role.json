@@ -1,0 +1,70 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/add_server_role",
+      "id":"api-add-server-role",
+      "method":"post",
+      "description":"Add a new role to a server.",
+      "response": [
+        "{",
+        "   \"Role added successfully.\"",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/api/add_server_role' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"token\": \"valid_token\", ",
+        "    \"username\": \"username123\", ",
+        "    \"server_id\": \"valid_id_server\", ",
+        "    \"role_name\": \"Moderator\", ",
+        "    \"color\": \"#FF0000\", ",
+        "    \"permissions\": \"['kick_users', 'ban_users']\"",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"User authentication token."
+        },
+
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"User's unique username."
+        },
+
+        {
+          "name":"server_id",
+          "type":"string",
+          "required":"Yes",
+          "description":"Id of the server that will receive this new role."
+        },
+
+        {
+          "name":"role_name",
+          "type":"string",
+          "required":"Yes",
+          "description":"Name of the new role."
+        },
+
+        {
+          "name":"color",
+          "type":"string",
+          "required":"Yes",
+          "description":"Color code for the new role."
+        },
+        
+        {
+          "name":"permissions",
+          "type":"collection",
+          "required":"Yes",
+          "description":"Collection of permissions that will be asigned to the role."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/accept_dm_invite",
+      "id":"api-accept-dm-invite",
+      "method":"post",
+      "description":"Accept a DM invite.",
+      "response": [
+        "{",
+        "    \"status\": \"dm_created\", ",
+        "    \"sid\": \"!generated_sid\", ",
+        "    \"invite_id\": \"uuid_invite\", ",
+        "    \"u1\": \"username1\", ",
+        "    \"u2\": \"username2\", ",
+        "    \"sender\": \"username1\"",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/api/accept_dm_invite' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"token\": \"valid_token\", ",
+        "    \"recipient\": \"username2\"",
+        "    \"sender\": \"username1\"",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"Recipient's authentication token."
+        },
+
+        {
+          "name":"recipient",
+          "type":"string",
+          "required":"Yes",
+          "description":"Recipient's username."
+        },
+        
+        {
+          "name":"sender",
+          "type":"string",
+          "required":"Yes",
+          "description":"Sender's username."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/fetch_user_roles",
+      "id":"api-fetch-user-roles",
+      "method":"get",
+      "description":"Retrieves the list of all roles assigned to a specific user.",
+      "response": [
+        "{",
+        "   \"Moderator\", ",    
+        "   \"Member\"",
+        "}"
+      ],
+      "request": [
+        "curl -X GET 'https://onlinedi.vision/api/fetch_user_roles?token=valid_token&username=username123&server_id=valid_server_id'"
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"User authentication token."
+        },
+
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"User's unique username."
+        },
+
+        {
+          "name":"server_id",
+          "type":"string",
+          "required":"Yes",
+          "description":"ID of server to list all roles for specific user."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/remove_role_from_user",
+      "id":"api-remove-role-from-user",
+      "method":"post",
+      "description":"Removes a role from a user.",
+      "response": [
+        "{",
+        "   \"Role removed successfully.\"",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/api/remove_role_from_user' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"token\": \"valid_token\", ",
+        "    \"username\": \"username123\", ",
+        "    \"server_id\": \"valid_id_server\", ",
+        "    \"role_name\": \"Moderator\"",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"User authentication token."
+        },
+
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"User's unique username."
+        },
+
+        {
+          "name":"server_id",
+          "type":"string",
+          "required":"Yes",
+          "description":"Server's ID where the role will be removed from the user."
+        },
+
+        {
+          "name":"role_name",
+          "type":"string",
+          "required":"Yes",
+          "description":"Name of the role that's going to be removed from the user."
+        }
+      ]
+    }
+  ]
+}

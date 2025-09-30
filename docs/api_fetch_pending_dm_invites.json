@@ -1,0 +1,47 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/fetch_pending_dm_invites",
+      "id":"api-fetch-pending-dm-invites",
+      "method":"post",
+      "description":"Obtains the list of pending DM invites for a user.",
+      "response": [
+        "{",
+        "    \"invites\": [",
+        "        {",
+        "            \"invite_id\": \"uuid_invite\", ",
+        "            \"sender\": \"username123\"",
+        "        }",
+        "        {",
+        "            \"invite_id\": \"uuid_invite\", ",
+        "            \"sender\": \"username123\"",
+        "        }",
+        "    ]",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/api/fetch_pending_dm_invites' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"token\": \"valid_token\", ",
+        "    \"username\": \"username123\"",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"User's authentication token."
+        },
+
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"Username of user to list pending dm invites for."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/assign_role_to_user",
+      "id":"api-assign-role-to-user",
+      "method":"post",
+      "description":"Assign a role to a user.",
+      "response": [
+        "{",
+        "   \"Role assigned successfully.\"",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/api/assign_role_to_user' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"token\": \"valid_token\", ",
+        "    \"username\": \"username123\", ",
+        "    \"server_id\": \"valid_id_server\", ",
+        "    \"role_name\": \"Moderator\"",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"User authentication token."
+        },
+
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"User's unique username."
+        },
+
+        {
+          "name":"server_id",
+          "type":"string",
+          "required":"Yes",
+          "description":"Server's ID where the user will be assigned the role."
+        },
+
+        {
+          "name":"role_name",
+          "type":"string",
+          "required":"Yes",
+          "description":"Name of the role that's going to be assigned to the user."
+        }
+      ]
+    }
+  ]
+}

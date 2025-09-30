@@ -1,0 +1,48 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/delete_friend",
+      "id":"api-delete-friend",
+      "method":"post",
+      "description":"Delete a user's friend.",
+      "response": [
+      "{",
+      "    \"status\": \"friendship_deleted\",",
+      "    \"user\": \"username1\",",
+      "    \"friend\": \"username2\"",
+      "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/api/delete_friend' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"token\": \"valid_token\", ",
+        "    \"user\": \"username1\"",
+        "    \"friend\": \"username2\"",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"User's authentication token."
+        },
+
+        {
+          "name":"user",
+          "type":"string",
+          "required":"Yes",
+          "description":"Username of user that wants to delete a friend."
+        },
+        
+        {
+          "name":"friend",
+          "type":"string",
+          "required":"Yes",
+          "description":"Username of friend that will be deleted from friends list."
+        }
+      ]
+    }
+  ]
+}

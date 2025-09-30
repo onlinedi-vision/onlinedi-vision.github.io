@@ -1,0 +1,57 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/send_dm_invite",
+      "id":"api-send-dm-invite",
+      "method":"post",
+      "description":"Sends a DM invite.",
+      "response": [
+        "{",
+        "    \"status\": \"already_invited\", ",
+        "    \"invite_id\": \"uuid_invite\", ",
+        "    \"u1\": \"username1\", ",
+        "    \"u2\": \"username2\", ",
+        "    \"sender\": \"username1\"",
+        "}",
+        "{",
+        "    \"status\": \"invite_created\", ",
+        "    \"invite_id\": \"uuid_invite\", ",
+        "    \"u1\": \"username1\", ",
+        "    \"u2\": \"username2\", ",
+        "    \"sender\": \"username1\"",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/api/send_dm_invite' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"token\": \"valid_token\", ",
+        "    \"sender\": \"username1\", ",
+        "    \"recipient\": \"username2\"",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"Sender's authentication token."
+        },
+
+        {
+          "name":"sender",
+          "type":"string",
+          "required":"Yes",
+          "description":"Sender's username."
+        },
+
+        {
+          "name":"recipient",
+          "type":"string",
+          "required":"Yes",
+          "description":"Recipient's username."
+        }
+      ]
+    }
+  ]
+}

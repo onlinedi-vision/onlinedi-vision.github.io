@@ -1,0 +1,43 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/fetch_friend_list",
+      "id":"api-fetch-friend-list",
+      "method":"post",
+      "description":"Obtains the list of friends for a user.",
+      "response": [
+      "{",
+      "    \"friends\": [",
+      "        {",
+      "            \"username\": \"user2\",",
+      "            \"friends_since\": \"2025-09-23 12:33:16\"",
+      "        }",
+      "    ]",
+      "}"       
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/api/fetch_friend_list' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"token\": \"valid_token\", ",
+        "    \"username\": \"username123\"",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"User's authentication token."
+        },
+
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"Username of user to list friends list for."
+        }
+      ]
+    }
+  ]
+}
