@@ -1,0 +1,59 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/servers/{sid}/api/{channel_name}/get_messages_migration",
+      "id":"api-fetch-messages-migration",
+      "method":"post",
+      "description":"Obtains a list of messages from a given channel within a given server.",
+      "response": [
+      "{",
+      "    \"m_list\": [",
+      "        {",
+      "            \"username\": \"user2\",",
+      "            \"m_content\": \"Hi! Hello!\"",
+      "            \"datetime\":\"2025-02-01:19:43:22888\"",
+      "        }",
+      "    ]",
+      "}"       
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/servers/1313/api/info/fetch_friend_list' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"token\": \"valid_token\", ",
+        "    \"username\": \"username123\"",
+        "    \"limit\": \"100\"",
+        "    \"offset\": \"50\"",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"User's authentication token."
+        },
+
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"Username of user to list friends list for."
+        },
+        
+        {
+          "name":"limit",
+          "type":"string",
+          "required":"No. (Optional)",
+          "description":"Limits the ammount of messages retrieved. (Newest N messages, where N is the limit)"
+        },
+        {
+          "name":"username",
+          "type":"string",
+          "required":"No. (Optional)",
+          "description":"Offsets the messages list."
+        }
+      ]
+    }
+  ]
+}
