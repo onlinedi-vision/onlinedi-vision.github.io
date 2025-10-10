@@ -301,22 +301,23 @@
             <h3><i class="fas fa-list"></i> Endpoints</h3>
             <ul class="endpoint-list">
 
-<li><a style="padding:4px;" href="#api-fetch-pending-dm-invites" class="active">/api/fetch_pending_dm_invites</a></li>
-<li><a style="padding:4px;" href="#api-fetch-user-roles" class="active">/api/fetch_user_roles</a></li>
-<li><a style="padding:4px;" href="#api-fetch-server-roles" class="active">/api/fetch_server_roles</a></li>
-<li><a style="padding:4px;" href="#api-get-server-info" class="active">/servers/{sid}/api/get_server_info</a></li>
-<li><a style="padding:4px;" href="#api-get-server-users" class="active">/servers/{sid}/api/get_server_users</a></li>
-<li><a style="padding:4px;" href="#api-remove-role-from-user" class="active">/api/remove_role_from_user</a></li>
-<li><a style="padding:4px;" href="#api-fetch-messages-migration" class="active">/servers/{sid}/api/{channel_name}/get_messages_migration</a></li>
-<li><a style="padding:4px;" href="#api-new-user" class="active">/api/new_user</a></li>
-<li><a style="padding:4px;" href="#api-send-dm-invite" class="active">/api/send_dm_invite</a></li>
-<li><a style="padding:4px;" href="#api-assign-role-to-user" class="active">/api/assign_role_to_user</a></li>
-<li><a style="padding:4px;" href="#api-fetch-friend-list" class="active">/api/fetch_friend_list</a></li>
-<li><a style="padding:4px;" href="#api-reject-dm-invite" class="active">/api/reject_dm_invite</a></li>
-<li><a style="padding:4px;" href="#api-delete-friend" class="active">/api/delete_friend</a></li>
-<li><a style="padding:4px;" href="#api-add-server-role" class="active">/api/add_server_role</a></li>
-<li><a style="padding:4px;" href="#api-try-login" class="active">/api/try_login</a></li>
 <li><a style="padding:4px;" href="#api-accept-dm-invite" class="active">/api/accept_dm_invite</a></li>
+<li><a style="padding:4px;" href="#api-add-server-role" class="active">/api/add_server_role</a></li>
+<li><a style="padding:4px;" href="#api-assign-role-to-user" class="active">/api/assign_role_to_user</a></li>
+<li><a style="padding:4px;" href="#api-delete-friend" class="active">/api/delete_friend</a></li>
+<li><a style="padding:4px;" href="#api-fetch-friend-list" class="active">/api/fetch_friend_list</a></li>
+<li><a style="padding:4px;" href="#api-fetch-pending-dm-invites" class="active">/api/fetch_pending_dm_invites</a></li>
+<li><a style="padding:4px;" href="#api-fetch-messages-migration" class="active">/servers/{sid}/api/{channel_name}/get_messages_migration</a></li>
+<li><a style="padding:4px;" href="#api-fetch-server-roles" class="active">/api/fetch_server_roles</a></li>
+<li><a style="padding:4px;" href="#api-fetch-user-roles" class="active">/api/fetch_user_roles</a></li>
+<li><a style="padding:4px;" href="#api-get-server-info" class="active">/servers/{sid}/api/get_server_info</a></li>
+<li><a style="padding:4px;" href="#api-new-user" class="active">/api/new_user</a></li>
+<li><a style="padding:4px;" href="#api-reject-dm-invite" class="active">/api/reject_dm_invite</a></li>
+<li><a style="padding:4px;" href="#api-remove-role-from-user" class="active">/api/remove_role_from_user</a></li>
+<li><a style="padding:4px;" href="#api-send-dm-invite" class="active">/api/send_dm_invite</a></li>
+<li><a style="padding:4px;" href="#api-get-server-users" class="active">/servers/{sid}/api/get_server_users</a></li>
+<li><a style="padding:4px;" href="#api-try-login" class="active">/api/try_login</a></li>
+<li><a style="padding:4px;" href="#api-delete-server-role" class="active">/api/delete_server_role</a></li>
 
             </ul>
         </aside>
@@ -324,1025 +325,14 @@
         <main class="main-content">
     
 
-            <section id="api-fetch-pending-dm-invites" class="endpoint-section">
+            <section id="api-accept-dm-invite" class="endpoint-section">
                 <div class="endpoint-header">
                     <span class="method post">POST</span>
-                    <span class="endpoint-url">/api/fetch_pending_dm_invites</span>
+                    <span class="endpoint-url">/api/accept_dm_invite</span>
                 </div>
                 
                 <p class="endpoint-description">
-                    Obtains the list of pending DM invites for a user.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>token</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User's authentication token.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>username</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Username of user to list pending dm invites for.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-fetch-pending-dm-invites')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-fetch-pending-dm-invites')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-fetch-pending-dm-invites" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X POST 'https://onlinedi.vision/api/fetch_pending_dm_invites' \
--H 'Content-Type: application/json' \
--d '{ 
-    "token": "valid_token", 
-    "username": "username123"
-}' 
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-fetch-pending-dm-invites" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-    "invites": [
-        {
-            "invite_id": "uuid_invite", 
-            "sender": "username123"
-        }
-        {
-            "invite_id": "uuid_invite", 
-            "sender": "username123"
-        }
-    ]
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-fetch-user-roles" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method get">GET</span>
-                    <span class="endpoint-url">/api/fetch_user_roles</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Retrieves the list of all roles assigned to a specific user.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>token</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User authentication token.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>username</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User's unique username.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>server_id</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>ID of server to list all roles for specific user.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-fetch-user-roles')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-fetch-user-roles')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-fetch-user-roles" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X GET 'https://onlinedi.vision/api/fetch_user_roles?token=valid_token&username=username123&server_id=valid_server_id'
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-fetch-user-roles" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-   "Moderator", 
-   "Member"
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-fetch-server-roles" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method get">GET</span>
-                    <span class="endpoint-url">/api/fetch_server_roles</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Retrieves the list of all roles defined for a given server.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>token</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User authentication token.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>username</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User's unique username.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>server_id</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>ID of server to list all roles from.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-fetch-server-roles')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-fetch-server-roles')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-fetch-server-roles" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X GET 'https://onlinedi.vision/api/fetch_server_roles?token=valid_token&username=username123&server_id=valid_server_id' 
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-fetch-server-roles" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-   "role_name": "Moderator", 
-   "server_id": "valid_server_id", 
-   "color": "#FF0000", 
-   "permissions": "['kick_users', 'ban_users']"
-}
-{
-   "role_name": "Admin", 
-   "server_id": "valid_server_id", 
-   "color": "#FFFFFF", 
-   "permissions": "['add_users', 'kick_users', 'ban_users', 'delete_server']"
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-get-server-info" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method get">GET</span>
-                    <span class="endpoint-url">/servers/{sid}/api/get_server_info</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Get all relevant information about a public server.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>sid</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>The ID of the server.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-get-server-info')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-get-server-info')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-get-server-info" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X GET 'https://onlinedi.vision/servers/1313/api/get_server_info'  
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-get-server-info" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-   "name":"Awsome Server"
-   "desc":"This is an AWESOME server :3"
-   "img_url":"https://link.to.image"
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-get-server-users" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method post">POST</span>
-                    <span class="endpoint-url">/servers/{sid}/api/get_server_users</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Get the list of users from a given server based on a valid token-username combination.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>username</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Username of the user (must be member of the server).</td>
-                        </tr>    
-
-                        <tr>
-                            <td>email</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Token of the user (must be valid).</td>
-                        </tr>    
-
-                        <tr>
-                            <td>sid (in URL path)</td>
-                            <td>integer</td>
-                            <td>Yes</td>
-                            <td>Server ID of the queried server.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-get-server-users')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-get-server-users')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-get-server-users" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X POST 'https://onlinedi.vision/servers/1313/api/get_server_users' \
--H 'Content-Type: application/json' \
--d '{ 
-    "username": "username123", 
-    "token": "asdfq3reQW355f..." 
-}' 
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-get-server-users" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-   "u_list":[
-        "username1",
-        "username2",
-   ]
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-remove-role-from-user" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method post">POST</span>
-                    <span class="endpoint-url">/api/remove_role_from_user</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Removes a role from a user.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>token</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User authentication token.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>username</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User's unique username.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>server_id</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Server's ID where the role will be removed from the user.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>role_name</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Name of the role that's going to be removed from the user.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-remove-role-from-user')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-remove-role-from-user')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-remove-role-from-user" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X POST 'https://onlinedi.vision/api/remove_role_from_user' \
--H 'Content-Type: application/json' \
--d '{ 
-    "token": "valid_token", 
-    "username": "username123", 
-    "server_id": "valid_id_server", 
-    "role_name": "Moderator"
-}' 
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-remove-role-from-user" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-   "Role removed successfully."
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-fetch-messages-migration" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method post">POST</span>
-                    <span class="endpoint-url">/servers/{sid}/api/{channel_name}/get_messages_migration</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Obtains a list of messages from a given channel within a given server.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>token</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User's authentication token.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>username</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Username of user to list friends list for.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>limit</td>
-                            <td>string</td>
-                            <td>No. (Optional)</td>
-                            <td>Limits the ammount of messages retrieved. (Newest N messages, where N is the limit)</td>
-                        </tr>    
-
-                        <tr>
-                            <td>username</td>
-                            <td>string</td>
-                            <td>No. (Optional)</td>
-                            <td>Offsets the messages list.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-fetch-messages-migration')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-fetch-messages-migration')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-fetch-messages-migration" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X POST 'https://onlinedi.vision/servers/1313/api/info/fetch_friend_list' \
--H 'Content-Type: application/json' \
--d '{ 
-    "token": "valid_token", 
-    "username": "username123"
-    "limit": "100"
-    "offset": "50"
-}' 
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-fetch-messages-migration" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-    "m_list": [
-        {
-            "username": "user2",
-            "m_content": "Hi! Hello!"
-            "datetime":"2025-02-01:19:43:22888"
-        }
-    ]
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-new-user" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method post">POST</span>
-                    <span class="endpoint-url">/api/new_user</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Create new user account.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>username</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Username of the new user.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>email</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>E-mail address of the new user.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>Password</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Salted password of the new user.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-new-user')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-new-user')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-new-user" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X POST 'https://onlinedi.vision/api/new_user' \
--H 'Content-Type: application/json' \
--d '{ 
-    "username": "username123", 
-    "email": "username@example.com", 
-    "password": "SALTEDsecurepassword123" 
-}' 
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-new-user" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-   "token":"asdsaerggreasfd..."
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-send-dm-invite" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method post">POST</span>
-                    <span class="endpoint-url">/api/send_dm_invite</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Sends a DM invite.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>token</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Sender's authentication token.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>sender</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Sender's username.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>recipient</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Recipient's username.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-send-dm-invite')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-send-dm-invite')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-send-dm-invite" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X POST 'https://onlinedi.vision/api/send_dm_invite' \
--H 'Content-Type: application/json' \
--d '{ 
-    "token": "valid_token", 
-    "sender": "username1", 
-    "recipient": "username2"
-}' 
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-send-dm-invite" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-    "status": "already_invited", 
-    "invite_id": "uuid_invite", 
-    "u1": "username1", 
-    "u2": "username2", 
-    "sender": "username1"
-}
-{
-    "status": "invite_created", 
-    "invite_id": "uuid_invite", 
-    "u1": "username1", 
-    "u2": "username2", 
-    "sender": "username1"
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-assign-role-to-user" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method post">POST</span>
-                    <span class="endpoint-url">/api/assign_role_to_user</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Assign a role to a user.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>token</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User authentication token.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>username</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User's unique username.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>server_id</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Server's ID where the user will be assigned the role.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>role_name</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Name of the role that's going to be assigned to the user.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-assign-role-to-user')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-assign-role-to-user')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-assign-role-to-user" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X POST 'https://onlinedi.vision/api/assign_role_to_user' \
--H 'Content-Type: application/json' \
--d '{ 
-    "token": "valid_token", 
-    "username": "username123", 
-    "server_id": "valid_id_server", 
-    "role_name": "Moderator"
-}' 
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-assign-role-to-user" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-   "Role assigned successfully."
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-fetch-friend-list" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method post">POST</span>
-                    <span class="endpoint-url">/api/fetch_friend_list</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Obtains the list of friends for a user.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>token</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User's authentication token.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>username</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Username of user to list friends list for.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-fetch-friend-list')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-fetch-friend-list')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-fetch-friend-list" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X POST 'https://onlinedi.vision/api/fetch_friend_list' \
--H 'Content-Type: application/json' \
--d '{ 
-    "token": "valid_token", 
-    "username": "username123"
-}' 
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-fetch-friend-list" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-    "friends": [
-        {
-            "username": "user2",
-            "friends_since": "2025-09-23 12:33:16"
-        }
-    ]
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-reject-dm-invite" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method post">POST</span>
-                    <span class="endpoint-url">/api/reject_dm_invite</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Reject a DM invite.
+                    Accept a DM invite.
                 </p>
                     
 
@@ -1387,16 +377,16 @@ curl -X POST 'https://onlinedi.vision/api/fetch_friend_list' \
 
                <div class="tab-container">
                     <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-reject-dm-invite')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-reject-dm-invite')">Response</button>
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-accept-dm-invite')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-accept-dm-invite')">Response</button>
                     </div>
                     
                    <div class="tab-content">
-                        <div id="request-api-reject-dm-invite" class="tab-pane active">
+                        <div id="request-api-accept-dm-invite" class="tab-pane active">
                             <div class="code-block">
                                 <pre>
                       
-curl -X POST 'https://onlinedi.vision/api/reject_dm_invite' \
+curl -X POST 'https://onlinedi.vision/api/accept_dm_invite' \
 -H 'Content-Type: application/json' \
 -d '{ 
     "token": "valid_token", 
@@ -1410,107 +400,17 @@ curl -X POST 'https://onlinedi.vision/api/reject_dm_invite' \
  
     
 
-                        <div id="response-api-reject-dm-invite" class="tab-pane">
+                        <div id="response-api-accept-dm-invite" class="tab-pane">
                             <div class="code-block">
                                 <pre>
 
 {
-    "status": "invite_rejected", 
+    "status": "dm_created", 
+    "sid": "!generated_sid", 
     "invite_id": "uuid_invite", 
     "u1": "username1", 
-    "u2": "username2"
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
-            <section id="api-delete-friend" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method post">POST</span>
-                    <span class="endpoint-url">/api/delete_friend</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Delete a user's friend.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>token</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User's authentication token.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>user</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Username of user that wants to delete a friend.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>friend</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>Username of friend that will be deleted from friends list.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-delete-friend')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-delete-friend')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-delete-friend" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X POST 'https://onlinedi.vision/api/delete_friend' \
--H 'Content-Type: application/json' \
--d '{ 
-    "token": "valid_token", 
-    "user": "username1"
-    "friend": "username2"
-}' 
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-delete-friend" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-    "status": "friendship_deleted",
-    "user": "username1",
-    "friend": "username2"
+    "u2": "username2", 
+    "sender": "username1"
 }
                             </pre>
                             </div>
@@ -1634,6 +534,1202 @@ curl -X POST 'https://onlinedi.vision/api/add_server_role' \
             </section>
     
 
+            <section id="api-assign-role-to-user" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/assign_role_to_user</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Assign a role to a user.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>token</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User authentication token.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User's unique username.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>server_id</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Server's ID where the user will be assigned the role.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>role_name</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Name of the role that's going to be assigned to the user.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-assign-role-to-user')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-assign-role-to-user')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-assign-role-to-user" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/api/assign_role_to_user' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "token": "valid_token", 
+    "username": "username123", 
+    "server_id": "valid_id_server", 
+    "role_name": "Moderator"
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-assign-role-to-user" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+   "Role assigned successfully."
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-delete-friend" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/delete_friend</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Delete a user's friend.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>token</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User's authentication token.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>user</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Username of user that wants to delete a friend.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>friend</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Username of friend that will be deleted from friends list.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-delete-friend')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-delete-friend')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-delete-friend" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/api/delete_friend' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "token": "valid_token", 
+    "user": "username1"
+    "friend": "username2"
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-delete-friend" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+    "status": "friendship_deleted",
+    "user": "username1",
+    "friend": "username2"
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-fetch-friend-list" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/fetch_friend_list</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Obtains the list of friends for a user.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>token</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User's authentication token.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Username of user to list friends list for.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-fetch-friend-list')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-fetch-friend-list')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-fetch-friend-list" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/api/fetch_friend_list' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "token": "valid_token", 
+    "username": "username123"
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-fetch-friend-list" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+    "friends": [
+        {
+            "username": "user2",
+            "friends_since": "2025-09-23 12:33:16"
+        }
+    ]
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-fetch-pending-dm-invites" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/fetch_pending_dm_invites</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Obtains the list of pending DM invites for a user.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>token</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User's authentication token.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Username of user to list pending dm invites for.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-fetch-pending-dm-invites')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-fetch-pending-dm-invites')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-fetch-pending-dm-invites" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/api/fetch_pending_dm_invites' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "token": "valid_token", 
+    "username": "username123"
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-fetch-pending-dm-invites" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+    "invites": [
+        {
+            "invite_id": "uuid_invite", 
+            "sender": "username123"
+        }
+        {
+            "invite_id": "uuid_invite", 
+            "sender": "username123"
+        }
+    ]
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-fetch-messages-migration" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/servers/{sid}/api/{channel_name}/get_messages_migration</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Obtains a list of messages from a given channel within a given server.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>token</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User's authentication token.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Username of user to list friends list for.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>limit</td>
+                            <td>string</td>
+                            <td>No. (Optional)</td>
+                            <td>Limits the ammount of messages retrieved. (Newest N messages, where N is the limit)</td>
+                        </tr>    
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>No. (Optional)</td>
+                            <td>Offsets the messages list.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-fetch-messages-migration')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-fetch-messages-migration')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-fetch-messages-migration" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/servers/1313/api/info/fetch_friend_list' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "token": "valid_token", 
+    "username": "username123"
+    "limit": "100"
+    "offset": "50"
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-fetch-messages-migration" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+    "m_list": [
+        {
+            "username": "user2",
+            "m_content": "Hi! Hello!"
+            "datetime":"2025-02-01:19:43:22888"
+        }
+    ]
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-fetch-server-roles" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-url">/api/fetch_server_roles</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Retrieves the list of all roles defined for a given server.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>token</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User authentication token.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User's unique username.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>server_id</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>ID of server to list all roles from.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-fetch-server-roles')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-fetch-server-roles')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-fetch-server-roles" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X GET 'https://onlinedi.vision/api/fetch_server_roles?token=valid_token&username=username123&server_id=valid_server_id' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-fetch-server-roles" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+   "role_name": "Moderator", 
+   "server_id": "valid_server_id", 
+   "color": "#FF0000", 
+   "permissions": "['kick_users', 'ban_users']"
+}
+{
+   "role_name": "Admin", 
+   "server_id": "valid_server_id", 
+   "color": "#FFFFFF", 
+   "permissions": "['add_users', 'kick_users', 'ban_users', 'delete_server']"
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-fetch-user-roles" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-url">/api/fetch_user_roles</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Retrieves the list of all roles assigned to a specific user.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>token</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User authentication token.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User's unique username.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>server_id</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>ID of server to list all roles for specific user.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-fetch-user-roles')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-fetch-user-roles')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-fetch-user-roles" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X GET 'https://onlinedi.vision/api/fetch_user_roles?token=valid_token&username=username123&server_id=valid_server_id'
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-fetch-user-roles" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+   "Moderator", 
+   "Member"
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-get-server-info" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-url">/servers/{sid}/api/get_server_info</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Get all relevant information about a public server.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>sid</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>The ID of the server.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-get-server-info')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-get-server-info')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-get-server-info" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X GET 'https://onlinedi.vision/servers/1313/api/get_server_info'  
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-get-server-info" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+   "name":"Awsome Server"
+   "desc":"This is an AWESOME server :3"
+   "img_url":"https://link.to.image"
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-new-user" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/new_user</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Create new user account.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Username of the new user.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>email</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>E-mail address of the new user.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>Password</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Salted password of the new user.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-new-user')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-new-user')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-new-user" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/api/new_user' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "username": "username123", 
+    "email": "username@example.com", 
+    "password": "SALTEDsecurepassword123" 
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-new-user" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+   "token":"asdsaerggreasfd..."
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-reject-dm-invite" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/reject_dm_invite</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Reject a DM invite.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>token</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Recipient's authentication token.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>recipient</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Recipient's username.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>sender</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Sender's username.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-reject-dm-invite')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-reject-dm-invite')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-reject-dm-invite" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/api/reject_dm_invite' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "token": "valid_token", 
+    "recipient": "username2"
+    "sender": "username1"
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-reject-dm-invite" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+    "status": "invite_rejected", 
+    "invite_id": "uuid_invite", 
+    "u1": "username1", 
+    "u2": "username2"
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-remove-role-from-user" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/remove_role_from_user</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Removes a role from a user.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>token</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User authentication token.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User's unique username.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>server_id</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Server's ID where the role will be removed from the user.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>role_name</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Name of the role that's going to be removed from the user.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-remove-role-from-user')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-remove-role-from-user')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-remove-role-from-user" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/api/remove_role_from_user' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "token": "valid_token", 
+    "username": "username123", 
+    "server_id": "valid_id_server", 
+    "role_name": "Moderator"
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-remove-role-from-user" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+   "Role removed successfully."
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-send-dm-invite" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/send_dm_invite</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Sends a DM invite.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>token</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Sender's authentication token.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>sender</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Sender's username.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>recipient</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Recipient's username.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-send-dm-invite')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-send-dm-invite')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-send-dm-invite" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/api/send_dm_invite' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "token": "valid_token", 
+    "sender": "username1", 
+    "recipient": "username2"
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-send-dm-invite" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+    "status": "already_invited", 
+    "invite_id": "uuid_invite", 
+    "u1": "username1", 
+    "u2": "username2", 
+    "sender": "username1"
+}
+{
+    "status": "invite_created", 
+    "invite_id": "uuid_invite", 
+    "u1": "username1", 
+    "u2": "username2", 
+    "sender": "username1"
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-get-server-users" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/servers/{sid}/api/get_server_users</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Get the list of users from a given server based on a valid token-username combination.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Username of the user (must be member of the server).</td>
+                        </tr>    
+
+                        <tr>
+                            <td>email</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Token of the user (must be valid).</td>
+                        </tr>    
+
+                        <tr>
+                            <td>sid (in URL path)</td>
+                            <td>integer</td>
+                            <td>Yes</td>
+                            <td>Server ID of the queried server.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-get-server-users')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-get-server-users')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-get-server-users" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/servers/1313/api/get_server_users' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "username": "username123", 
+    "token": "asdfq3reQW355f..." 
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-get-server-users" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+   "u_list":[
+        "username1",
+        "username2",
+   ]
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
             <section id="api-try-login" class="endpoint-section">
                 <div class="endpoint-header">
                     <span class="method post">POST</span>
@@ -1716,14 +1812,14 @@ curl -X POST 'https://onlinedi.vision/api/try_login' \
             </section>
     
 
-            <section id="api-accept-dm-invite" class="endpoint-section">
+            <section id="api-delete-server-role" class="endpoint-section">
                 <div class="endpoint-header">
                     <span class="method post">POST</span>
-                    <span class="endpoint-url">/api/accept_dm_invite</span>
+                    <span class="endpoint-url">/api/delete_server_role</span>
                 </div>
                 
                 <p class="endpoint-description">
-                    Accept a DM invite.
+                    Deletes a role from the entire server and removes the role from all user that have it.
                 </p>
                     
 
@@ -1745,21 +1841,28 @@ curl -X POST 'https://onlinedi.vision/api/try_login' \
                             <td>token</td>
                             <td>string</td>
                             <td>Yes</td>
-                            <td>Recipient's authentication token.</td>
+                            <td>User authentication token.</td>
                         </tr>    
 
                         <tr>
-                            <td>recipient</td>
+                            <td>username</td>
                             <td>string</td>
                             <td>Yes</td>
-                            <td>Recipient's username.</td>
+                            <td>User's unique username.</td>
                         </tr>    
 
                         <tr>
-                            <td>sender</td>
+                            <td>server_id</td>
                             <td>string</td>
                             <td>Yes</td>
-                            <td>Sender's username.</td>
+                            <td>Server ID where the role will be deleted from.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>role_name</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Name of the role that's going to be deleted from server.</td>
                         </tr>    
 
                     </tbody>
@@ -1768,21 +1871,22 @@ curl -X POST 'https://onlinedi.vision/api/try_login' \
 
                <div class="tab-container">
                     <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-accept-dm-invite')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-accept-dm-invite')">Response</button>
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-delete-server-role')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-delete-server-role')">Response</button>
                     </div>
                     
                    <div class="tab-content">
-                        <div id="request-api-accept-dm-invite" class="tab-pane active">
+                        <div id="request-api-delete-server-role" class="tab-pane active">
                             <div class="code-block">
                                 <pre>
                       
-curl -X POST 'https://onlinedi.vision/api/accept_dm_invite' \
+curl -X POST 'https://onlinedi.vision/api/delete_server_role' \
 -H 'Content-Type: application/json' \
 -d '{ 
     "token": "valid_token", 
-    "recipient": "username2"
-    "sender": "username1"
+    "username": "username123", 
+    "server_id": "valid_id_server", 
+    "role_name": "Moderator"
 }' 
 
 </pre>
@@ -1791,17 +1895,12 @@ curl -X POST 'https://onlinedi.vision/api/accept_dm_invite' \
  
     
 
-                        <div id="response-api-accept-dm-invite" class="tab-pane">
+                        <div id="response-api-delete-server-role" class="tab-pane">
                             <div class="code-block">
                                 <pre>
 
 {
-    "status": "dm_created", 
-    "sid": "!generated_sid", 
-    "invite_id": "uuid_invite", 
-    "u1": "username1", 
-    "u2": "username2", 
-    "sender": "username1"
+   "Role deleted successfully"
 }
                             </pre>
                             </div>
