@@ -1,0 +1,55 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/delete_server_role",
+      "id":"api-delete-server-role",
+      "method":"post",
+      "description":"Deletes a role from the entire server and removes the role from all user that have it.",
+      "response": [
+        "{",
+        "   \"Role deleted successfully\"",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/api/delete_server_role' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"token\": \"valid_token\", ",
+        "    \"username\": \"username123\", ",
+        "    \"server_id\": \"valid_id_server\", ",
+        "    \"role_name\": \"Moderator\"",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"User authentication token."
+        },
+
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"User's unique username."
+        },
+
+        {
+          "name":"server_id",
+          "type":"string",
+          "required":"Yes",
+          "description":"Server ID where the role will be deleted from."
+        },
+
+        {
+          "name":"role_name",
+          "type":"string",
+          "required":"Yes",
+          "description":"Name of the role that's going to be deleted from server."
+        }
+      ]
+    }
+  ]
+}
+
