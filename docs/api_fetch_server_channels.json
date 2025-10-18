@@ -1,0 +1,50 @@
+{
+  "endpoints": [
+    {
+      "endpoint": "/servers/{sid}/api/get_channels",
+      "id": "api-fetch-server-channels",
+      "method": "post",
+      "description": "Obtains the list of channels for a given server.",
+      "response": [
+        "{",
+        "    \"c_list\": [",
+        "        {",
+        "            \"channel_name\": \"welcome\"",
+        "        },",
+        "        {",
+        "            \"channel_name\": \"info\"",
+        "        }",
+        "    ]",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/servers/{sid}/api/get_channels' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{",
+        "    \"username\": \"user123\",",
+        "    \"token\": \"valid_token\"",
+        "}'"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": "Yes",
+          "description": "User's authentication token."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": "Yes",
+          "description": "Username of the user requesting the channel list."
+        },
+        {
+          "name": "sid",
+          "type": "string",
+          "required": "Yes",
+          "description": "Server ID for which the channel list is requested."
+        }
+      ]
+    }
+  ]
+}

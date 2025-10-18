@@ -1,0 +1,48 @@
+{
+  "endpoints": [
+    {
+      "endpoint": "/servers/{sid}/api/{channel_name}/delete_channel",
+      "id": "api-delete-server-channel",
+      "method": "post",
+      "description": "Deletes a specified channel from the server.",
+      "response": [
+          "\"Channel deleted successfully\""
+
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/servers/1/api/sug/delete_channel' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{",
+        "    \"token\": \"valid_token\",",
+        "    \"username\": \"user123\"",
+        "}'"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": "Yes",
+          "description": "User's authentication token."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": "Yes",
+          "description": "Username of the user requesting the deletion."
+        },
+        {
+          "name": "sid",
+          "type": "string",
+          "required": "Yes",
+          "description": "Server ID from which the channel will be deleted."
+        },
+        {
+          "name": "channel_name",
+          "type": "string",
+          "required": "Yes",
+          "description": "Name of the channel to be deleted."
+        }
+      ]
+    }
+  ]
+}

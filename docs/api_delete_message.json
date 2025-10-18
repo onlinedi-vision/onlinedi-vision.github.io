@@ -1,0 +1,54 @@
+{
+  "endpoints": [
+    {
+      "endpoint": "/servers/{sid}/api/{channel_name}/delete_message",
+      "id": "api-delete-channel-message",
+      "method": "post",
+      "description": "Deletes a specific message from a given channel, based on its UTC timestamp.",
+      "response": [
+        "\"Message deleted successfully\""
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/servers/{sid}/api/{channel_name}/delete_message' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{",
+        "    \"datetime\": \"2025-10-18 11:55:10.009\",",
+        "    \"token\": \"valid_token\",",
+        "    \"username\": \"user123\"",
+        "}'"
+      ],
+      "parameters": [
+        {
+          "name": "datetime",
+          "type": "string",
+          "required": "Yes",
+          "description": "UTC timestamp of the message to be deleted (format: YYYY-MM-DD HH:MM:SS.sss)."
+        },
+        {
+          "name": "token",
+          "type": "string",
+          "required": "Yes",
+          "description": "User's authentication token."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": "Yes",
+          "description": "Username of the user requesting message deletion."
+        },
+        {
+          "name": "sid",
+          "type": "string",
+          "required": "Yes",
+          "description": "Server ID where the channel is located."
+        },
+        {
+          "name": "channel_name",
+          "type": "string",
+          "required": "Yes",
+          "description": "Name of the channel containing the message."
+        }
+      ]
+    }
+  ]
+}

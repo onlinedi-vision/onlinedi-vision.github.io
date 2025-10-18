@@ -1,0 +1,41 @@
+{
+  "endpoints": [
+    {
+      "endpoint": "/servers/{sid}/api/delete_server",
+      "id": "api-delete-server",
+      "method": "post",
+      "description": "Deletes a specified server. Only users with sufficient permissions can perform this action.",
+      "response": [
+        "\"Server deleted successfully\""
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/servers/1/api/delete_server' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{",
+        "    \"token\": \"valid_token\",",
+        "    \"username\": \"user123\"",
+        "}'"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": "Yes",
+          "description": "User's authentication token used to authorize the delete action."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": "Yes",
+          "description": "Username of the user requesting server deletion."
+        },
+        {
+          "name": "sid",
+          "type": "string",
+          "required": "Yes",
+          "description": "ID of the server to be deleted."
+        }
+      ]
+    }
+  ]
+}

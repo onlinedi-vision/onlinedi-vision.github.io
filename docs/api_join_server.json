@@ -1,0 +1,43 @@
+{
+  "endpoints": [
+    {
+      "endpoint": "/servers/{sid}/api/join",
+      "id": "api-join-server",
+      "method": "post",
+      "description": "Allows a user to join a specified server using a valid authentication token.",
+      "response": [
+        "{",
+        "    \"token\": \"new_token\"",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/servers/1/api/join' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{",
+        "    \"token\": \"valid_token\",",
+        "    \"username\": \"user123\"",
+        "}'"
+      ],
+      "parameters": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": "Yes",
+          "description": "User's authentication token used to authorize the join request."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": "Yes",
+          "description": "Username of the user attempting to join the server."
+        },
+        {
+          "name": "sid",
+          "type": "string",
+          "required": "Yes",
+          "description": "ID of the server the user wants to join."
+        }
+      ]
+    }
+  ]
+}
