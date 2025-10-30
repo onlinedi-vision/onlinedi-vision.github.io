@@ -1,0 +1,46 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/set_user_pfp",
+      "id":"api-set-user-pfp",
+      "method":"post",
+      "description":"Set user pfp.",
+      "response": [
+        "{",
+        "   \"img_url\":\"https://example.com/username123/pfp.png\"",
+        "}"
+      ],
+      "request": [
+        "curl -X POST 'https://onlinedi.vision/api/set_user_pfp' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"token\": \"valid_token\", ",
+        "    \"username\": \"username123\", ",
+        "    \"img_url\": \"https://example.com/username123/pfp.png\"",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"User token."
+        },
+
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"User's unique username."
+        },
+
+        {
+          "name":"img_url",
+          "type":"string",
+          "required":"Yes",
+          "description":"URL of the image that's going to be set as profile picture for a user."
+        }
+      ]
+    }
+  ]
+}

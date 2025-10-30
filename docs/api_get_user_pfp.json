@@ -1,0 +1,38 @@
+{
+  "endpoints": [
+    {
+      "endpoint":"/api/get_user_pfp",
+      "id":"api-get-user-pfp",
+      "method":"get",
+      "description":"Retrieves img url of user's profile picture.",
+      "response": [
+        "{",
+        "   \"img_url\":\"https://example.com/username123/pfp.png\"",
+        "}"
+      ],
+      "request": [
+        "curl -X GET 'https://onlinedi.vision/api/get_user_pfp' \\",
+        "-H 'Content-Type: application/json' \\",
+        "-d '{ ",
+        "    \"token\": \"valid_token\", ",
+        "    \"username\": \"username123\"",
+        "}' "
+      ],
+      "parameters": [
+        {
+          "name":"token",
+          "type":"string",
+          "required":"Yes",
+          "description":"User token."
+        },
+
+        {
+          "name":"username",
+          "type":"string",
+          "required":"Yes",
+          "description":"User's unique username."
+        }
+      ]
+    }
+  ]
+}
