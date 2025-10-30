@@ -324,8 +324,8 @@
 <li><a style="padding:4px;" href="#api-send-dm-invite" class="active">/api/send_dm_invite</a></li>
 <li><a style="padding:4px;" href="#api-get-server-users" class="active">/servers/{sid}/api/get_server_users</a></li>
 <li><a style="padding:4px;" href="#api-try-login" class="active">/api/try_login</a></li>
-<li><a style="padding:4px;" href="#api-get-user-pfp" class="active">/api/get_user_pfp</a></li>
 <li><a style="padding:4px;" href="#api-set-user-pfp" class="active">/api/set_user_pfp</a></li>
+<li><a style="padding:4px;" href="#api-get-user-pfp" class="active">/api/get_user_pfp</a></li>
 
             </ul>
         </aside>
@@ -2483,88 +2483,6 @@ curl -X POST 'https://onlinedi.vision/api/try_login' \
             </section>
     
 
-            <section id="api-get-user-pfp" class="endpoint-section">
-                <div class="endpoint-header">
-                    <span class="method get">GET</span>
-                    <span class="endpoint-url">/api/get_user_pfp</span>
-                </div>
-                
-                <p class="endpoint-description">
-                    Retrieves img url of user's profile picture.
-                </p>
-                    
-
-        
-            <h3>Parameters</h3>
-                <table class="parameter-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Required</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                
-
-                        <tr>
-                            <td>token</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User token.</td>
-                        </tr>    
-
-                        <tr>
-                            <td>username</td>
-                            <td>string</td>
-                            <td>Yes</td>
-                            <td>User's unique username.</td>
-                        </tr>    
-
-                    </tbody>
-            </table>
-     
-
-               <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" onclick="openTab(event, 'request-api-get-user-pfp')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'response-api-get-user-pfp')">Response</button>
-                    </div>
-                    
-                   <div class="tab-content">
-                        <div id="request-api-get-user-pfp" class="tab-pane active">
-                            <div class="code-block">
-                                <pre>
-                      
-curl -X GET 'https://onlinedi.vision/api/get_user_pfp' \
--H 'Content-Type: application/json' \
--d '{ 
-    "token": "valid_token", 
-    "username": "username123"
-}' 
-
-</pre>
-                            </div>
-                        </div>
- 
-    
-
-                        <div id="response-api-get-user-pfp" class="tab-pane">
-                            <div class="code-block">
-                                <pre>
-
-{
-   "img_url":"https://example.com/username123/pfp.png"
-}
-                            </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    
-
             <section id="api-set-user-pfp" class="endpoint-section">
                 <div class="endpoint-header">
                     <span class="method post">POST</span>
@@ -2645,6 +2563,89 @@ curl -X POST 'https://onlinedi.vision/api/set_user_pfp' \
                                 <pre>
 
 {
+   "img_url":"https://example.com/username123/pfp.png"
+}
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+
+            <section id="api-get-user-pfp" class="endpoint-section">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/get_user_pfp</span>
+                </div>
+                
+                <p class="endpoint-description">
+                    Retrieves img url of user's profile picture.
+                </p>
+                    
+
+        
+            <h3>Parameters</h3>
+                <table class="parameter-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+
+                        <tr>
+                            <td>token</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User token.</td>
+                        </tr>    
+
+                        <tr>
+                            <td>username</td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>User's unique username.</td>
+                        </tr>    
+
+                    </tbody>
+            </table>
+     
+
+               <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" onclick="openTab(event, 'request-api-get-user-pfp')">Request</button>
+                        <button class="tab-button" onclick="openTab(event, 'response-api-get-user-pfp')">Response</button>
+                    </div>
+                    
+                   <div class="tab-content">
+                        <div id="request-api-get-user-pfp" class="tab-pane active">
+                            <div class="code-block">
+                                <pre>
+                      
+curl -X POST 'https://onlinedi.vision/api/get_user_pfp' \
+-H 'Content-Type: application/json' \
+-d '{ 
+    "token": "valid_token", 
+    "username": "username123"
+}' 
+
+</pre>
+                            </div>
+                        </div>
+ 
+    
+
+                        <div id="response-api-get-user-pfp" class="tab-pane">
+                            <div class="code-block">
+                                <pre>
+
+{
+   "token":"new_valid_token"
    "img_url":"https://example.com/username123/pfp.png"
 }
                             </pre>

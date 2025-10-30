@@ -3,15 +3,16 @@
     {
       "endpoint":"/api/get_user_pfp",
       "id":"api-get-user-pfp",
-      "method":"get",
+      "method":"post",
       "description":"Retrieves img url of user's profile picture.",
       "response": [
         "{",
+        "   \"token\":\"new_valid_token\"",
         "   \"img_url\":\"https://example.com/username123/pfp.png\"",
         "}"
       ],
       "request": [
-        "curl -X GET 'https://onlinedi.vision/api/get_user_pfp' \\",
+        "curl -X POST 'https://onlinedi.vision/api/get_user_pfp' \\",
         "-H 'Content-Type: application/json' \\",
         "-d '{ ",
         "    \"token\": \"valid_token\", ",
