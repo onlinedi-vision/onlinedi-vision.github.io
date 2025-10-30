@@ -7,6 +7,7 @@
       "description":"Set user pfp.",
       "response": [
         "{",
+        "   \"token\":\"new_valid_token\"",
         "   \"img_url\":\"https://example.com/username123/pfp.png\"",
         "}"
       ],
